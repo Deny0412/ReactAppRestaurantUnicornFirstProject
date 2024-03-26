@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nazev": "Restaurace 1",
+    "adresa": "Adresa 1",
+    "telefon": "123456789",
+    "email": "restaurace1@example.com",
+    "popis": "Popis restaurace 1",
+    "otviraciHodiny": "8:00 - 20:00"
+  },
+  {
+    "id": 2,
+    "nazev": "Restaurace 2",
+    "adresa": "Adresa 2",
+    "telefon": "987654321",
+    "email": "restaurace2@example.com",
+    "popis": "Popis restaurace 2",
+    "otviraciHodiny": "9:00 - 21:00"
+  }
+]

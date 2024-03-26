@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nazev": "Produkt 1",
+    "popis": "Popis produktu 1",
+    "cena": 10.99,
+    "alergeny": "Alergeny produktu 1",
+    "vahagramy": 200,
+    "restaurace_id": 1
+  },
+  {
+    "id": 2,
+    "nazev": "Produkt 2",
+    "popis": "Popis produktu 2",
+    "cena": 15.99,
+    "alergeny": "Alergeny produktu 2",
+    "vahagramy": 300,
+    "restaurace_id": 2
+  }
+]
