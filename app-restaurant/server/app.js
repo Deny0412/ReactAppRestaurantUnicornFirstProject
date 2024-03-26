@@ -8,7 +8,7 @@ app.use(express.json()); // podpora pro application/json
 app.use(express.urlencoded({ extended: true })); // podpora pro application/x-www-form-urlencoded
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("zkouska!");
 });
 
 app.use("/restaurace", restauraceController);
