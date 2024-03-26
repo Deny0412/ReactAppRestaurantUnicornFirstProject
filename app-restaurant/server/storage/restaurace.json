@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "nazev": "Restaurace 1",
-    "adresa": "Adresa 1",
-    "telefon": "123456789",
-    "email": "restaurace1@example.com",
-    "popis": "Popis restaurace 1",
-    "otviraciHodiny": "8:00 - 20:00"
+    "nazev": "restauraceZkouska",
+    "adresa": "AdresaZkouska",
+    "telefon": "987654321",
+    "email": "restaurace@zkouska.cz",
+    "popis": "popis zkouska",
+    "otviraciHodiny": "10-20"
   },
   {
     "id": 2,
