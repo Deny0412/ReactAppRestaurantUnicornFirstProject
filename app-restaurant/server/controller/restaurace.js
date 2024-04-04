@@ -1,20 +1,30 @@
 const express = require("express");
 const router = express.Router();
 
-const List = require("../abl/restaurace/list");
-const Update = require("../abl/restaurace/update");
+const GetAbl = require("../abl/restaurace/getAbl");
+const ListAbl = require("../abl/restaurace/listAbl");
+const CreateAbl = require("../abl/restaurace/createAbl");
+const UpdateAbl = require("../abl/restaurace/updateAbl");
+const DeleteAbl = require("../abl/restaurace/deleteAbl");
 
 router.get("/get", (req, res) => {
-  console.log(req.query);
-  res.send("getting users!");
+  GetAbl(req, res);
 });
 
 router.get("/list", (req, res) => {
-  List(req, res);
+  ListAbl(req, res);
+});
+
+router.post("/create", (req, res) => {
+  CreateAbl(req, res);
 });
 
 router.post("/update", (req, res) => {
-  Update(req, res);
+  UpdateAbl(req, res);
+});
+
+router.post("/delete", (req, res) => {
+  DeleteAbl(req, res);
 });
 
 module.exports = router;
