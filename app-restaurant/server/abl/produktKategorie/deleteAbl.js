@@ -1,6 +1,9 @@
 const Ajv = require("ajv");
 const ajv = new Ajv();
-const kategorieDao = require("../../dao/produktKategorie-dao.js");
+
+const produktDao = require("../../dao/produkt-dao.js");
+const kategorieDao = require("../../dao/kategorie-dao.js");
+const produktKategorieDao = require("../../dao/produktKategorie-dao.js");
 
 const schema = {
   type: "object",
@@ -27,9 +30,19 @@ async function DeleteAbl(req, res) {
       });
       return;
     }
-
-    kategorieDao.remove(reqParams.id);
-    res.json({});
+    if (
+      produktDao.get(reqParams.produktId) &&
+      kategorieDao.get(reqParams.kategorieId)
+    ) {
+      produktKategorieDao.remove(reqParams.kategorieId, reqParams.produktId);
+      res.json({ message: "ProduktKategorie deleted" });
+    } else {
+      res.status(400).json({
+        code: "produktOrKategorieDoesNotExist",
+        message: "produkt or kategorie does not exist",
+      });
+      return;
+    }
   } catch (e) {
     res.status(500).json({ message: e.message });
   }

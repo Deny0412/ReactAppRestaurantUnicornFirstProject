@@ -6,19 +6,18 @@ const CreateAbl = require("../abl/produktKategorie/createAbl");
 const DeleteAbl = require("../abl/produktKategorie/deleteAbl");
 const ListAbl = require("../abl/produktKategorie/listAbl");
 
+router.get("/list", (req, res) => {
+  ListAbl(req, res);
+});
+router.get("/get", (req, res) => {
+  GetAbl(req, res);
+});
 router.post("/create", (req, res) => {
   CreateAbl(req, res);
 });
 
 router.post("/delete", (req, res) => {
   DeleteAbl(req, res);
-});
-
-router.post("/get", (req, res) => {
-  GetAbl(req, res);
-});
-router.post("/list", (req, res) => {
-  ListAbl(req, res);
 });
 
 module.exports = router;

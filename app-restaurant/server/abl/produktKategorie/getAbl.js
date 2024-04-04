@@ -15,8 +15,7 @@ const schema = {
 async function GetAbl(req, res) {
   try {
     // get request query or body
-    const reqParams = req.query ? req.query : req.body;
-
+    const reqParams = req.query?.id ? req.query : req.body;
     // validate input
     const valid = ajv.validate(schema, reqParams);
     if (!valid) {
@@ -29,7 +28,10 @@ async function GetAbl(req, res) {
     }
 
     // read produktkategorie by given id
-    const produktkategorie = produktkategorieDao.get(reqParams);
+    const produktkategorie = produktkategorieDao.get(
+      reqParams.kategorieId,
+      reqParams.produktId
+    );
     if (!produktkategorie) {
       res.status(404).json({
         code: "produktkategorieNotFound",

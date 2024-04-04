@@ -2,8 +2,6 @@ const Ajv = require("ajv");
 const ajv = new Ajv();
 
 const produktKategorieDao = require("../../dao/produktKategorie-dao.js");
-const produktDao = require("../../dao/produkt-dao.js");
-const kategorieDao = require("../../dao/kategorie-dao.js");
 
 const schema = {
   type: "object",
@@ -17,8 +15,7 @@ const schema = {
 
 async function CreateAbl(req, res) {
   try {
-    const produktKategorie = req.body;
-
+    let produktKategorie = req.body;
     // validate input
     const valid = ajv.validate(schema, produktKategorie);
     if (!valid) {
@@ -29,19 +26,15 @@ async function CreateAbl(req, res) {
       });
       return;
     }
-    if (produktDao.get(produktKategorie.produktId)) {
-    } else {
+    if (
+      produktKategorieDao.get(
+        produktKategorie.kategorieId,
+        produktKategorie.produktId
+      )
+    ) {
       res.status(400).json({
-        code: "produktDoesNotExist",
-        message: "produkt does not exist",
-      });
-      return;
-    }
-    if (kategorieDao.get(produktKategorie.kategorieId)) {
-    } else {
-      res.status(400).json({
-        code: "kategoriDoesNotExist",
-        message: "kategorie does not exist",
+        code: "produktKategorieAlreadyExists",
+        message: "produktKategorie already exists",
       });
       return;
     }

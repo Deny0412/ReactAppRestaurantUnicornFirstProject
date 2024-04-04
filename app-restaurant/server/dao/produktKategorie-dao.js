@@ -1,20 +1,25 @@
 const fs = require("fs");
 const path = require("path");
+const { isObject } = require("util");
 
 const produktkategorieFolderPath = path.join(
   __dirname,
   "storage",
-  "produktkategorieList"
+  "produktKategorieList"
 );
 
 // Method to read an produktkategorie from a file
 function get(kategorieId, produktId) {
   try {
     const produktkategorieList = list();
-    const produktkategorie = produktkategorieList.find(
-      (a) => a.kategorieId === kategorieId && a.produktId === produktId
-    );
-    return produktkategorie;
+    //console.log(produktkategorieList);
+    if (produktkategorieList) {
+      const produktkategorie = produktkategorieList.find(
+        (item) =>
+          item.kategorieId === kategorieId && item.produktId === produktId
+      );
+      return produktkategorie;
+    }
   } catch (error) {
     if (error.code === "ENOENT") return null;
     throw { code: "failedToReadProduktKategorie", message: error.message };
@@ -24,17 +29,20 @@ function get(kategorieId, produktId) {
 //Method to create a produktKategorie from a file
 function create(produktkategorie) {
   try {
-    const produktKategorie = get(
+    const produktKategorieExists = get(
       produktkategorie.kategorieId,
       produktkategorie.produktId
     );
-    if (Object.keys(produktkategorie).length === 0) {
+    if (
+      produktKategorieExists === null ||
+      produktKategorieExists === undefined
+    ) {
       const filePath = path.join(
         produktkategorieFolderPath,
-        `${produktkategorie.kategorieId}_${produktkategorie.produktId}_${produktkategorie.produktkategorie}.txt`
+        `${produktkategorie.kategorieId}_${produktkategorie.produktId}.txt`
       );
       fs.writeFileSync(filePath, "", "utf8");
-      return produktkategorie;
+      return (message = "Produktkategorie created");
     } else {
       throw {
         code: "produktKategorieAlreadyExists",
@@ -78,14 +86,12 @@ function update(produktkategorie) {
 function remove(kategorieId, produktId) {
   try {
     const produktkategorie = get(kategorieId, produktId);
-    if (produktkategorie) {
-      const filePath = path.join(
-        produktkategorieFolderPath,
-        produktkategorie.file
-      );
-      fs.unlinkSync(filePath);
-    }
-    return { message: "Produktkategorie succesfully removed" };
+    const filePath = path.join(
+      produktkategorieFolderPath,
+      produktkategorie.kategorieId + "_" + produktkategorie.produktId + ".txt"
+    );
+    fs.unlinkSync(filePath);
+    return {};
   } catch (error) {
     if (error.code === "ENOENT") {
       return {};
@@ -94,19 +100,19 @@ function remove(kategorieId, produktId) {
   }
 }
 
-// Method to list produktkategories in a folder
 function list() {
   try {
     const files = fs.readdirSync(produktkategorieFolderPath);
-    const produktkategorieList = files.map((file) => {
+
+    const produktKatFinalList = files.map((file) => {
       const produktkategorieData = file.replace(".txt", "").split("_");
       return {
         kategorieId: produktkategorieData[0],
         produktId: produktkategorieData[1],
-        file,
       };
     });
-    return produktkategorieList;
+
+    return produktKatFinalList;
   } catch (error) {
     throw { code: "failedToListProduktKategories", message: error.message };
   }
@@ -149,9 +155,8 @@ function kategorieMap() {
 }
 
 module.exports = {
+  create,
   get,
   remove,
   list,
-  produktMap,
-  kategorieMap,
 };
