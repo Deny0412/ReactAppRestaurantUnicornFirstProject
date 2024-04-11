@@ -1,1 +1,9 @@
-{"nazev":"Produkt 15","popis":"Popis produktu 1","cena":10.18,"alergeny":"Alergeny produktu 1","vahagramy":200,"restauraceId":"cd3262f05c18863e715e4e0a5e4ea50d","id":"32fc6b7769b22bef3009f4722a3f0da1"}
+{
+  "nazev": "Produkt 15",
+  "popis": "Popis produktu 1",
+  "cena": 10.18,
+  "alergeny": "Alergeny produktu 1",
+  "vahagramy": 200,
+  "restauraceId": "cd3262f05c18863e715e4e0a5e4ea50d",
+  "id": "32fc6b7769b22bef3009f4722a3f0da1"
+}

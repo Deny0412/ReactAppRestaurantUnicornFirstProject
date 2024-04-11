@@ -54,6 +54,7 @@ function create(produktkategorie) {
   }
 }
 
+//---------------------------------------------------------------bad try
 /* // Method to update produktkategorie in a file
 function update(produktkategorie) {
   try {
@@ -80,7 +81,7 @@ function update(produktkategorie) {
   } catch (error) {
     throw { code: "failedToUpdateProduktKategorie", message: error.message };
   }
-} */
+} ----------------------------------------------------------------------------------------------*/
 
 // Method to remove an produktkategorie from a file
 function remove(kategorieId, produktId) {
@@ -118,6 +119,7 @@ function list() {
   }
 }
 
+//not used
 function produktMap() {
   const produktkategorieList = list();
   const produktkategorieMap = {};
@@ -135,7 +137,7 @@ function produktMap() {
   });
   return produktkategorieMap;
 }
-
+//not used
 function kategorieMap() {
   const produktkategorieList = list();
   const produktkategorieMap = {};

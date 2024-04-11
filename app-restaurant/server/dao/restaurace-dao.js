@@ -73,7 +73,6 @@ function list() {
     throw { code: "failedToListRestauraces", message: error.message };
   }
 }
-
 module.exports = {
   get,
   create,

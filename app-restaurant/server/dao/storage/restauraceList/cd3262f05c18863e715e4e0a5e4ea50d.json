@@ -1,1 +1,9 @@
-{"nazev":"restauraceUpdate","adresa":"AdresaZkouska","telefon":"420987654321","email":"restaurace@zkouska.cz","popis":"popis zkouska","otviraciHodiny":"10-20","id":"cd3262f05c18863e715e4e0a5e4ea50d"}
+{
+  "nazev": "restauraceUpdate",
+  "adresa": "AdresaZkouska",
+  "telefon": "420987654321",
+  "email": "restaurace@zkouska.cz",
+  "popis": "popis zkouska",
+  "otviraciHodiny": "10-20",
+  "id": "cd3262f05c18863e715e4e0a5e4ea50d"
+}
