@@ -8,7 +8,7 @@ const schema = {
     nazev: { type: "string" },
     id: { type: "string" },
   },
-  required: [],
+  required: ["id"],
   additionalProperties: false,
 };
 
