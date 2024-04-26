@@ -1,13 +1,72 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 300px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+a {
+  text-decoration: none;
+}
+.p-5 {
+  padding: 5px;
+}
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+.card-style {
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  width: 28%;
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  min-height: 250px;
+}
+.nadpis-restaurace {
+  background-color: darksalmon;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+  margin: 0;
+  padding: 5px;
+}
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1000px) {
+  .card-style {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card-style {
+    width: 80%;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.color-primary {
+}
+.color-secondary {
+}
+.color-text {
 }

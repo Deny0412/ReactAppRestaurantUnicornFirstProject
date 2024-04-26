@@ -6,11 +6,10 @@ function RestauraceList() {
   const { restauraceList } = useContext(RestaurantListContext);
   console.log(restauraceList);
   return (
-    <div>
+    <div className="card-list">
       {restauraceList.map((restaurace) => {
         return <RestauraceCard key={restaurace} restaurace={restaurace} />;
       })}
-      ;
     </div>
   );
 }

@@ -5,10 +5,16 @@ import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
     <>
-      <div className="card-header">
-        <NavBar />
-      </div>
-      <div style={{ height: "calc(100vh - 106px)", overflow: "hidden" }}>
+      <NavBar />
+      <div
+        className="MainContent"
+        style={{
+          height: "calc(100vh - 106px)",
+          overflow: "hidden",
+          width: "80%",
+          margin: "0 auto",
+        }}
+      >
         <Outlet />
       </div>
       <Footer />
