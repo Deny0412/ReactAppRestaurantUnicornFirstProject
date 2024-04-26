@@ -4,16 +4,13 @@ import RestauraceCard from "./RestauraceCard.js";
 
 function RestauraceList() {
   const { restauraceList } = useContext(RestaurantListContext);
-
+  console.log(restauraceList);
   return (
     <div>
-      {/* {restauraceList.forEach((element) => {
-        <RestauraceCard key={element.id} restaurace={element} />;
-      })} */}
-      {/* {restauraceList.map((restaurace) => {
+      {restauraceList.map((restaurace) => {
         return <RestauraceCard key={restaurace} restaurace={restaurace} />;
       })}
-      ; */}
+      ;
     </div>
   );
 }

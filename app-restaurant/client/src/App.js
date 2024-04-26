@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import RestauraceListProvider from "./RestauraceListProvider";
 import RestauraceList from "./RestauraceList";
+import RestauraceProvider from "./RestauraceProvider";
+import Restaurace from "./Restaurace";
 
 function App() {
   return (
@@ -18,22 +20,15 @@ function App() {
                 </RestauraceListProvider>
               }
             />
-            <Route
-              index
-              element={
-                <RestauraceListProvider>
-                  <RestauraceList />
-                </RestauraceListProvider>
-              }
-            />
-            {/*     <Route
+            {/* <Route
               path="restauraceDetail"
               element={
-                <EventProvider>
-                  <EventRoute />
-                </EventProvider>
+                <RestauraceProvider>
+                  <Restaurace />
+                </RestauraceProvider>
               }
             /> */}
+
             {/* <Route path="*" element={"not found"} /> */}
           </Route>
         </Routes>
