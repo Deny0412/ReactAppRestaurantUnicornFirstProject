@@ -5,6 +5,8 @@ import RestauraceListProvider from "./restaurace/RestauraceListProvider";
 import RestauraceList from "./restaurace/RestauraceList";
 import RestauraceProvider from "./restaurace/RestauraceProvider";
 import Restaurace from "./restaurace/Restaurace";
+import RestauraceFilter from "./restaurace/RestauraceFilter";
+import KategorieListProvider from "./kategorie/KategorieListProvider";
 
 function App() {
   return (
@@ -16,7 +18,10 @@ function App() {
               index
               element={
                 <RestauraceListProvider>
-                  <RestauraceList />
+                  <KategorieListProvider>
+                    <RestauraceFilter />
+                    <RestauraceList />
+                  </KategorieListProvider>
                 </RestauraceListProvider>
               }
             />

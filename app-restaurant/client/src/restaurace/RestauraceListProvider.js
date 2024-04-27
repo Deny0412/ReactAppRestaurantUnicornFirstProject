@@ -8,33 +8,68 @@ const RestaurantListProvider = ({ children }) => {
     error: null,
     data: null,
   });
+  const [filterState, setFilter] = useState({
+    mesto: "",
+    kategorieId: "",
+  });
 
   useEffect(() => {
     handleLoad();
   }, []);
 
   async function handleLoad() {
-    setRestauraceLoadObject((current) => ({ ...current, state: "pending" }));
-    const response = await fetch(`http://localhost:8000/restaurace/list`, {
-      method: "GET",
-    });
-    const responseJson = await response.json();
-    if (response.status < 400) {
-      setRestauraceLoadObject({ state: "ready", data: responseJson });
-      return responseJson;
-    } else {
-      setRestauraceLoadObject((current) => ({
-        state: "error",
-        data: current.data,
-        error: responseJson.error,
-      }));
-      throw new Error(JSON.stringify(responseJson, null, 2));
+    console.log(filterState.mesto, filterState.kategorieId);
+    if (filterState.mesto === "" && filterState.kategorieId === "") {
+      setRestauraceLoadObject((current) => ({ ...current, state: "pending" }));
+      const response = await fetch(`http://localhost:8000/restaurace/list`, {
+        method: "GET",
+      });
+
+      const responseJson = await response.json();
+      if (response.status < 400) {
+        setRestauraceLoadObject({ state: "ready", data: responseJson });
+        return responseJson;
+      } else {
+        setRestauraceLoadObject((current) => ({
+          state: "error",
+          data: current.data,
+          error: responseJson.error,
+        }));
+        throw new Error(JSON.stringify(responseJson, null, 2));
+      }
+    } /*když jsou aplikaované nějaké filtry */ else {
+      setRestauraceLoadObject((current) => ({ ...current, state: "pending" }));
+
+      const response = await fetch(
+        `http://localhost:8000/restaurace/listByFilters?${new URLSearchParams(
+          filterState
+        )}`,
+        {
+          method: "GET",
+        }
+      );
+
+      const responseJson = await response.json();
+      if (response.status < 400) {
+        setRestauraceLoadObject({ state: "ready", data: responseJson });
+        return responseJson;
+      } else {
+        setRestauraceLoadObject((current) => ({
+          state: "error",
+          data: current.data,
+          error: responseJson.error,
+        }));
+        throw new Error(JSON.stringify(responseJson, null, 2));
+      }
     }
   }
 
   const value = {
     state: restauraceLoadObject.state,
     restauraceList: restauraceLoadObject.data || [],
+    mesto: filterState.mesto,
+    kategorieId: filterState.kategorieId,
+    setFilter,
   };
   return (
     <RestaurantListContext.Provider value={value}>

@@ -16,6 +16,17 @@ a {
 .p-5 {
   padding: 5px;
 }
+.d-flex {
+  display: flex;
+}
+.form-filter {
+  height: 70px;
+}
+.form-filter > * {
+  width: 20%;
+  margin-right: 20px;
+  height: 60%;
+}
 .vertical-center {
   display: flex;
   align-items: center;

@@ -4,29 +4,38 @@ const produktDao = require("../../dao/produkt-dao.js");
 
 async function ListByFiltersAbl(req, res) {
   try {
-    const filters = req.body;
+    const filters = {
+      mesto: req.query.mesto,
+      kategorieId: req.query.kategorieId,
+    };
     //zjistíme jaké kategorie patří do filters.kategorieId
-    const produktKategorieList = produktKategorieDao
-      .list()
-      .filter((item) => item.kategorieId === filters.kategorieId);
-
+    let produktKategorieList;
+    if (!filters.kategorieId) {
+      produktKategorieList = produktKategorieDao.list();
+    } else {
+      produktKategorieList = produktKategorieDao
+        .list()
+        .filter((item) => item.kategorieId === filters.kategorieId);
+    }
     let produktList = [];
     produktKategorieList.forEach((item) => {
       produktList.push(produktDao.get(item.produktId));
     });
-
     let restauraceList = [];
-    produktList.forEach((item) => {
-      if (
-        !restauraceList.some(
-          (restaurace) => restaurace.id === item.restauraceId
-        )
-      ) {
-        restauraceList.push(restauraceDao.get(item.restauraceId));
-      }
-    });
-
-    if (filters.hasOwnProperty("mesto")) {
+    if (!filters.kategorieId) {
+      restauraceList = restauraceDao.list();
+    } else {
+      produktList.forEach((item) => {
+        if (
+          !restauraceList.some(
+            (restaurace) => restaurace.id === item.restauraceId
+          )
+        ) {
+          restauraceList.push(restauraceDao.get(item.restauraceId));
+        }
+      });
+    }
+    if (filters.mesto !== undefined) {
       restauraceList = restauraceList.filter(
         (item) => item.adresa.split(",")[0] === filters.mesto
       );
