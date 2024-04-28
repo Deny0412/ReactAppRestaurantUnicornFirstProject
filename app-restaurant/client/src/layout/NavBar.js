@@ -6,10 +6,10 @@ import { mdiSilverwareForkKnife } from "@mdi/js";
 function NavBar() {
   const navigate = useNavigate();
   return (
-    <Navbar expand="lg" style={{ backgroundColor: "grey", color: "white" }}>
+    <Navbar expand="lg" style={{ backgroundColor: "lightblue" }}>
       <Container className="center">
         <div onClick={() => navigate("/")}>
-          <Icon color={"black"} path={mdiSilverwareForkKnife} size={2} />
+          <Icon color={"darkblue"} path={mdiSilverwareForkKnife} size={2} />
         </div>
       </Container>
     </Navbar>

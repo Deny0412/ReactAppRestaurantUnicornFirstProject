@@ -9,8 +9,8 @@ const Layout = () => {
       <div
         className="MainContent"
         style={{
-          height: "calc(100vh - 106px)",
-          overflow: "hidden",
+          minHeight: "calc(100vh - 106px)",
+
           width: "80%",
           margin: "0 auto",
         }}

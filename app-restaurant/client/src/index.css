@@ -6,25 +6,68 @@ body {
   min-width: 300px;
 }
 
+.footer {
+  position: sticky;
+  width: 100%;
+  bottom: 0px;
+  background-color: lightblue;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 a {
+  color: darkblue;
   text-decoration: none;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+a:hover {
+  color: white;
+  transition: color 0.2s ease-in-out;
 }
 .p-5 {
-  padding: 5px;
+  padding: 15px;
 }
 .d-flex {
   display: flex;
 }
+
+.filter-height {
+  height: 30px;
+  border-radius: 5px;
+  border: 3px solid lightskyblue;
+}
+.filter-height:focus {
+  outline: none;
+  border-color: darkblue;
+  transition: border-color 0.3s ease-in-out;
+}
+.btn-filter {
+  min-width: 100px;
+  min-height: 40px;
+  width: 10%;
+  background-color: skyblue;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-filter:hover {
+  background-color: darkblue;
+}
 .form-filter {
-  height: 70px;
+  min-height: 70px;
+  margin: 15px;
+  gap: 30px;
 }
 .form-filter > * {
   width: 20%;
-  margin-right: 20px;
   height: 60%;
 }
 .vertical-center {
@@ -32,17 +75,19 @@ a {
   align-items: center;
 }
 .card-style {
-  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 7px 10px 0px rgba(0, 0, 0, 0.3);
   width: 28%;
-  border: 1px solid black;
+  border: none;
   margin: 10px;
   border-radius: 10px;
   padding-bottom: 10px;
   min-height: 250px;
+  background-color: lightblue;
 }
 .nadpis-restaurace {
-  background-color: darksalmon;
+  background-color: darkblue;
   border-radius: 10px 10px 0 0;
+  color: white;
   height: 50px;
   margin: 0;
   padding: 5px;
@@ -54,21 +99,12 @@ a {
   max-width: 1400px;
   margin: 0 auto;
 }
-@media screen and (max-width: 1000px) {
-  .card-style {
-    width: 40%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .card-style {
-    width: 80%;
-  }
-}
 
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .card-bottom {
   display: flex;
@@ -80,4 +116,116 @@ a {
 .color-secondary {
 }
 .color-text {
+}
+
+/* Restaurace Menu */
+.restaurace-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2rem 0;
+}
+.restaurace-menu > * {
+  min-width: 190px;
+}
+
+.restaurace-item {
+  background-color: lightblue;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 1rem;
+  width: calc(33.333% - 2rem);
+}
+
+.restaurace-name {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.restaurace-description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0rem;
+}
+
+.restaurace-price {
+  color: rgb(37, 163, 65);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0rem;
+}
+
+.restaurace-allergens {
+  color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.restaurace-weight {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Restaurace Detail Info o restauraci */
+.restaurace-detail {
+  background-color: lightblue;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.restaurace-detail h1 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.restaurace-detail p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.restaurace-detail div {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.restaurace-detail a {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+/* Media screen max min*/
+
+@media screen and (max-width: 1000px) {
+  .card-style {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .restaurace-item {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card-style {
+    width: 80%;
+  }
+  .form-filter {
+    column-gap: 5px;
+    gap: 5px;
+  }
 }

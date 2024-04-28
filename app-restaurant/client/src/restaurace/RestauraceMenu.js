@@ -5,16 +5,16 @@ function RestauraceMenu() {
   const { produkty } = useContext(RestauraceContext);
   console.log(produkty);
   return (
-    <div style={{ width: "100%" }}>
+    <div className="restaurace-menu">
       {produkty &&
         produkty.map((restaurace) => {
           return (
-            <div>
-              <h2>{restaurace.nazev}</h2>
-              <p>{restaurace.popis}</p>
-              <p>{restaurace.cena}</p>
-              <p>{restaurace.alergeny}</p>
-              <p>{restaurace.vahagramy}</p>
+            <div className="restaurace-item" key={restaurace.id}>
+              <h2 className="restaurace-name">{restaurace.nazev}</h2>
+              <p className="restaurace-description">{restaurace.popis}</p>
+              <p className="restaurace-price">{restaurace.cena} Kč</p>
+              <p className="restaurace-allergens">{restaurace.alergeny}</p>
+              <p className="restaurace-weight">{restaurace.vahagramy}g</p>
             </div>
           );
         })}
