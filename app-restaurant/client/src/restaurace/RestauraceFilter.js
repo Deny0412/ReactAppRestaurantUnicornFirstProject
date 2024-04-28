@@ -17,7 +17,6 @@ function RestauraceFilter() {
         kategorieId: formData.get("kategorieId").toString(),
       };
       setFilter(filters);
-      console.log(filters);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -37,21 +36,23 @@ function RestauraceFilter() {
           placeholder="Zadejte město"
         />
       </Form.Group>
-
-      <Form.Select
-        name="kategorieId"
-        aria-label="Vyber kategorii"
-        style={{ width: "20%" }}
-      >
-        <option value="">Vyber Kategorii</option>
-        {state === "ready" &&
-          kategorieList &&
-          kategorieList.map((kategorie) => (
-            <option key={kategorie.id} value={kategorie.id}>
-              {kategorie.nazev}
-            </option>
-          ))}
-      </Form.Select>
+      <Form.Group controlId="form.kategorieId " className="center">
+        <Form.Label>Kategorie</Form.Label>
+        <Form.Select
+          name="kategorieId"
+          aria-label="Vyber kategorii"
+          style={{ width: "20%" }}
+        >
+          <option value="">Všechny</option>
+          {state === "ready" &&
+            kategorieList &&
+            kategorieList.map((kategorie) => (
+              <option key={kategorie.id} value={kategorie.id}>
+                {kategorie.nazev}
+              </option>
+            ))}
+        </Form.Select>
+      </Form.Group>
       <Button variant="primary" type="submit" style={{ width: "5%" }}>
         Submit
       </Button>

@@ -2,7 +2,7 @@ const produktDao = require("../../dao/produkt-dao.js");
 
 async function ListByRestauraceAbl(req, res) {
   try {
-    reqParams = req.body;
+    reqParams = req.query;
 
     const produktList = produktDao
       .list()

@@ -18,7 +18,6 @@ const RestaurantListProvider = ({ children }) => {
   }, [filterState]);
 
   async function handleLoad() {
-    console.log("handleLoad");
     let response;
     if (!filterState.mesto && !filterState.kategorieId) {
       setRestauraceLoadObject((current) => ({ ...current, state: "pending" }));
@@ -52,7 +51,6 @@ const RestaurantListProvider = ({ children }) => {
           }
         );
       }
-      console.log(response);
     }
     const responseJson = await response.json();
     if (response.status < 400) {
@@ -67,7 +65,6 @@ const RestaurantListProvider = ({ children }) => {
       throw new Error(JSON.stringify(responseJson, null, 2));
     }
   }
-  console.log(restauraceLoadObject.data);
   const value = {
     state: restauraceLoadObject.state,
     restauraceList: restauraceLoadObject.data || [],
