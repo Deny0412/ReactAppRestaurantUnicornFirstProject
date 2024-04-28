@@ -82,7 +82,13 @@ a:hover {
   border-radius: 10px;
   padding-bottom: 10px;
   min-height: 250px;
-  background-color: lightblue;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 60%,
+    rgba(173, 216, 230, 1) 100%
+  );
 }
 .nadpis-restaurace {
   background-color: darkblue;
