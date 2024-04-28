@@ -15,60 +15,64 @@ const RestaurantListProvider = ({ children }) => {
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [filterState]);
 
   async function handleLoad() {
-    console.log(filterState.mesto, filterState.kategorieId);
-    if (filterState.mesto === "" && filterState.kategorieId === "") {
+    console.log("handleLoad");
+    let response;
+    if (!filterState.mesto && !filterState.kategorieId) {
       setRestauraceLoadObject((current) => ({ ...current, state: "pending" }));
-      const response = await fetch(`http://localhost:8000/restaurace/list`, {
+      response = await fetch(`http://localhost:8000/restaurace/listByFilters`, {
         method: "GET",
       });
-
-      const responseJson = await response.json();
-      if (response.status < 400) {
-        setRestauraceLoadObject({ state: "ready", data: responseJson });
-        return responseJson;
-      } else {
-        setRestauraceLoadObject((current) => ({
-          state: "error",
-          data: current.data,
-          error: responseJson.error,
-        }));
-        throw new Error(JSON.stringify(responseJson, null, 2));
+    } else {
+      if (!filterState.mesto) {
+        response = await fetch(
+          `http://localhost:8000/restaurace/listByFilters?kategorieId=${filterState.kategorieId}`,
+          {
+            method: "GET",
+          }
+        );
       }
-    } /*když jsou aplikaované nějaké filtry */ else {
-      setRestauraceLoadObject((current) => ({ ...current, state: "pending" }));
-
-      const response = await fetch(
-        `http://localhost:8000/restaurace/listByFilters?${new URLSearchParams(
-          filterState
-        )}`,
-        {
-          method: "GET",
-        }
-      );
-
-      const responseJson = await response.json();
-      if (response.status < 400) {
-        setRestauraceLoadObject({ state: "ready", data: responseJson });
-        return responseJson;
-      } else {
-        setRestauraceLoadObject((current) => ({
-          state: "error",
-          data: current.data,
-          error: responseJson.error,
-        }));
-        throw new Error(JSON.stringify(responseJson, null, 2));
+      if (!filterState.kategorieId) {
+        response = await fetch(
+          `http://localhost:8000/restaurace/listByFilters?mesto=${filterState.mesto}`,
+          {
+            method: "GET",
+          }
+        );
       }
+      if (filterState.mesto && filterState.kategorieId) {
+        response = await fetch(
+          `http://localhost:8000/restaurace/listByFilters?${new URLSearchParams(
+            filterState
+          )}`,
+          {
+            method: "GET",
+          }
+        );
+      }
+      console.log(response);
+    }
+    const responseJson = await response.json();
+    if (response.status < 400) {
+      setRestauraceLoadObject({ state: "ready", data: responseJson });
+      return responseJson;
+    } else {
+      setRestauraceLoadObject((current) => ({
+        state: "error",
+        data: current.data,
+        error: responseJson.error,
+      }));
+      throw new Error(JSON.stringify(responseJson, null, 2));
     }
   }
-
+  console.log(restauraceLoadObject.data);
   const value = {
     state: restauraceLoadObject.state,
     restauraceList: restauraceLoadObject.data || [],
-    mesto: filterState.mesto,
-    kategorieId: filterState.kategorieId,
+    /* mesto: filterState.mesto,
+    kategorieId: filterState.kategorieId, */
     setFilter,
   };
   return (

@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { RestaurantListContext } from "./RestauraceListProvider.js";
 import RestauraceCard from "./RestauraceCard.js";
 
-function RestauraceList() {
+function RestauraceList(/* { restauraceList } */) {
   const { restauraceList } = useContext(RestaurantListContext);
-  console.log(restauraceList);
+  //console.log(restauraceList);
   return (
     <div className="card-list">
       {restauraceList.map((restaurace) => {
-        return <RestauraceCard key={restaurace} restaurace={restaurace} />;
+        return <RestauraceCard key={restaurace.id} restaurace={restaurace} />;
       })}
     </div>
   );

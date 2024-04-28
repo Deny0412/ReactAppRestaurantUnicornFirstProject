@@ -20,8 +20,8 @@ function App() {
                 <RestauraceListProvider>
                   <KategorieListProvider>
                     <RestauraceFilter />
-                    <RestauraceList />
                   </KategorieListProvider>
+                  <RestauraceList />
                 </RestauraceListProvider>
               }
             />

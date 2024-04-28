@@ -10,16 +10,16 @@ function RestauraceFilter() {
   //HandleSubmit
   const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const filters = {
-      mesto: formData.get("mesto"),
-      kategorieId: formData.get("kategorieId"),
-    };
-    //console.log(filters);
     try {
+      const formData = new FormData(event.target);
+      const filters = {
+        mesto: formData.get("mesto").toString(),
+        kategorieId: formData.get("kategorieId").toString(),
+      };
       setFilter(filters);
+      console.log(filters);
     } catch (error) {
-      console.error(error);
+      console.error("Error submitting form:", error);
     }
   });
   return (
@@ -51,10 +51,6 @@ function RestauraceFilter() {
               {kategorie.nazev}
             </option>
           ))}
-        {/* {state === "ready" &&
-          kategorieList.map((kategorie) => {
-            return <option key={kategorie.id}>{kategorie.nazev}</option>;
-          })} */}
       </Form.Select>
       <Button variant="primary" type="submit" style={{ width: "5%" }}>
         Submit
