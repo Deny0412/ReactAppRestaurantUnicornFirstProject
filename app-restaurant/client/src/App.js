@@ -11,36 +11,34 @@ import RestauraceMenu from "./restaurace/RestauraceMenu";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={
-                <RestauraceListProvider>
-                  <KategorieListProvider>
-                    <RestauraceFilter />
-                    <RestauraceList />
-                  </KategorieListProvider>
-                </RestauraceListProvider>
-              }
-            />
-            <Route
-              path="restauraceDetail"
-              element={
-                <RestauraceProvider>
-                  <RestauraceDetail />
-                  <RestauraceMenu />
-                </RestauraceProvider>
-              }
-            />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <RestauraceListProvider>
+                <KategorieListProvider>
+                  <RestauraceFilter />
+                  <RestauraceList />
+                </KategorieListProvider>
+              </RestauraceListProvider>
+            }
+          />
+          <Route
+            path="restauraceDetail"
+            element={
+              <RestauraceProvider>
+                <RestauraceDetail />
+                <RestauraceMenu />
+              </RestauraceProvider>
+            }
+          />
 
-            {/* <Route path="*" element={"not found"} /> */}
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+          {/* <Route path="*" element={"not found"} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

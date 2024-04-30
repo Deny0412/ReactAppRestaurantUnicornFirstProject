@@ -7,14 +7,14 @@ function RestauraceMenu() {
   return (
     <div className="restaurace-menu">
       {produkty &&
-        produkty.map((restaurace) => {
+        produkty.map((produkt) => {
           return (
-            <div className="restaurace-item" key={restaurace.id}>
-              <h2 className="restaurace-name">{restaurace.nazev}</h2>
-              <p className="restaurace-description">{restaurace.popis}</p>
-              <p className="restaurace-price">{restaurace.cena} Kč</p>
-              <p className="restaurace-allergens">{restaurace.alergeny}</p>
-              <p className="restaurace-weight">{restaurace.vahagramy}g</p>
+            <div className="restaurace-item" key={produkt.id}>
+              <h2 className="restaurace-name">{produkt.nazev}</h2>
+              <p className="restaurace-description">{produkt.popis}</p>
+              <p className="restaurace-price">{produkt.cena} Kč</p>
+              <p className="restaurace-allergens">{produkt.alergeny}</p>
+              <p className="restaurace-weight">{produkt.vahagramy}g</p>
             </div>
           );
         })}
