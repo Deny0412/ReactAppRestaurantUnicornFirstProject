@@ -14,6 +14,7 @@ function RestauraceProvider({ children }) {
   useEffect(() => {
     handleLoadRestauraceInfoPlusProdukty();
   }, []);
+
   async function handleLoadRestauraceInfoPlusProdukty() {
     setRestauraceLoadObject((current) => ({ ...current, state: "pending" }));
     const responseData = await fetch(
